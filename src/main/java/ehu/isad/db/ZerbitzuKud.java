@@ -20,9 +20,9 @@ public class ZerbitzuKud {
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         dbKudeatzaile.execSQL(query);
     }
-    public List<String> lortuZerbitzuak() {
+    public List<String> lortuLiburuak() {
 
-        String query = "select id, izena from services";
+        String query = "select isbn, argitaletxea, orriKop, irudiak, izena from liburua";
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         ResultSet rs = dbKudeatzaile.execSQL(query);
 
@@ -30,12 +30,14 @@ public class ZerbitzuKud {
         try {
             while (rs.next()) {
 
-                int kodea = rs.getInt("id");
+                String isbn = rs.getString("isbn");
+                String arg = rs.getString("argitaletxea");
+                int orriKop = rs.getInt("orriKop");
+                String irudia = rs.getString("irudiak");
                 String izena = rs.getString("izena");
 
-                System.out.println(kodea + ":" + izena);
+                System.out.println(isbn+ ":" +izena+":"+arg+":"+orriKop+":"+irudia);
                 emaitza.add(izena);
-
             }
         } catch(SQLException throwables){
             throwables.printStackTrace();
