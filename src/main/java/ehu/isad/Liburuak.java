@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import com.google.gson.Gson;
-import ehu.isad.Book;
 import ehu.isad.controller.LiburuakKuk;
 import ehu.isad.controller.XehetasunakKud;
 import javafx.application.Application;
@@ -21,8 +20,6 @@ public class Liburuak extends Application {
     private Stage stage;
     private Scene sceneLiburuak;
     private Scene sceneXehetasunak;
-    private Parent liburuakUI;
-    private Parent xehetasunakUI;
     private LiburuakKuk liburuakKud;
     private XehetasunakKud xehetasunakKud;
 
@@ -51,13 +48,13 @@ public class Liburuak extends Application {
     }
     private void pantailakKargatu() throws IOException {
         FXMLLoader loaderLiburuak = new FXMLLoader(getClass().getResource("/Liburuak.fxml"));
-        liburuakUI = (Parent) loaderLiburuak.load();
+        Parent liburuakUI = (Parent) loaderLiburuak.load();
         liburuakKud = loaderLiburuak.getController();
         liburuakKud.setMain(this);
         sceneLiburuak = new Scene(liburuakUI);
 
         FXMLLoader loaderXehetasunak = new FXMLLoader(getClass().getResource("/xehetasunak.fxml"));
-        xehetasunakUI = (Parent) loaderXehetasunak.load();
+        Parent xehetasunakUI = (Parent) loaderXehetasunak.load();
         xehetasunakKud = loaderXehetasunak.getController();
         xehetasunakKud.setMain(this);
         sceneXehetasunak = new Scene(xehetasunakUI);

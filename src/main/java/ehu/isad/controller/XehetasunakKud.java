@@ -44,7 +44,7 @@ public class XehetasunakKud {
             arg = arg +", "+ book.details.publishers[i];
         }
         this.argitaletxea.setText(arg);
-        this.izenburua.setText(book.title);
+        this.izenburua.setText(book.details.title);
         this.orriKop.setText(book.details.number_of_pages.toString());
     }
     public void setMain(Liburuak liburuak){

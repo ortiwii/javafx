@@ -33,8 +33,8 @@ public class LiburuakKuk implements Initializable {
 
         Book book = (Book)cbox.getValue();
         try {
-            Book liburua = sarea.readFromUrl(book.isbn);
-            main.xehetasunakErakutsi(liburua);
+            book = sarea.readFromUrl(book.isbn);
+            main.xehetasunakErakutsi(book);
         } catch (IOException e) {
             e.printStackTrace();
         }
