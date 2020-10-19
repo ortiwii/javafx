@@ -23,20 +23,6 @@ public class Liburuak extends Application {
     private LiburuakKuk liburuakKud;
     private XehetasunakKud xehetasunakKud;
 
-    private Book readFromUrl(String isbn) throws IOException, MalformedURLException {
-        URL openlibrary = new URL("https://openlibrary.org/api/books?bibkeys=ISBN:"+isbn+"&jscmd=details&format=json");
-        URLConnection yc = openlibrary.openConnection();
-        BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-        String inputLine = in.readLine();
-        in.close();
-
-        String[] zatiak = inputLine.split("ISBN:"+isbn+"\":");
-        inputLine = zatiak[1].substring(0, zatiak[1].length()-1);
-
-        Gson gson = new Gson();
-        return gson.fromJson(inputLine, Book.class);
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
