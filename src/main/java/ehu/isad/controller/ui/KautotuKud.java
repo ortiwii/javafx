@@ -54,4 +54,10 @@ public class KautotuKud implements Initializable {
 
     }
 
+    @FXML
+    void onClickEzabatu(ActionEvent event) {
+        String aukera = comboZerbitzua.getValue().toString();
+        ZerbitzuKud.getInstance().KenduZerbitzua(aukera);
+        comboZerbitzua.getItems().remove(aukera);
+    }
 }

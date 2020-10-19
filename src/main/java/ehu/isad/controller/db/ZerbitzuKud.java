@@ -15,7 +15,11 @@ public class ZerbitzuKud {
 
     private ZerbitzuKud() {
     }
-
+    public void KenduZerbitzua (String zerbitzua){
+        String query = "delete from services where izena = '"+zerbitzua+"';";
+        DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
+        dbKudeatzaile.execSQL(query);
+    }
     public List<String> lortuZerbitzuak() {
 
         String query = "select id, izena from services";
