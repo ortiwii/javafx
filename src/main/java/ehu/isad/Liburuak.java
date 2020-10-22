@@ -45,8 +45,8 @@ public class Liburuak extends Application {
         xehetasunakKud.setMain(this);
         sceneXehetasunak = new Scene(xehetasunakUI);
     }
-    public void xehetasunakErakutsi(Book book) throws IOException {
-        this.xehetasunakKud.setInfo(book);
+    public void xehetasunakErakutsi(String isbn) throws IOException {
+        this.xehetasunakKud.setInfo(isbn);
         stage.setScene(sceneXehetasunak);
         stage.show();
     }

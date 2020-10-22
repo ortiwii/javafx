@@ -17,7 +17,6 @@ public class Utils {
                 IOException e) {
             e.printStackTrace();
         }
-
         return properties;
     }
 }

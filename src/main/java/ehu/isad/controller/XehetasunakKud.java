@@ -2,6 +2,7 @@ package ehu.isad.controller;
 
 import ehu.isad.Book;
 import ehu.isad.Liburuak;
+import ehu.isad.db.ZerbitzuKud;
 import ehu.isad.utils.Sarea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.List;
 
 public class XehetasunakKud {
 
@@ -36,16 +38,14 @@ public class XehetasunakKud {
             e.printStackTrace();
         }
     }
-    public void setInfo (Book book) throws IOException {
-        Image pic = sarea.createImage(book.thumbnail_url);
+    public void setInfo (String isbn) throws IOException {
+        Image pic = ZerbitzuKud.getInstance().irekiIrudia(isbn);
         this.irudia.setImage(pic);
-        String arg = book.details.publishers[0];
-        for (int i = 1; i < book.details.publishers.length; i ++){
-            arg = arg +", "+ book.details.publishers[i];
-        }
-        this.argitaletxea.setText(arg);
-        this.izenburua.setText(book.details.title);
-        this.orriKop.setText(book.details.number_of_pages.toString());
+        List<String> lista = ZerbitzuKud.getInstance().getLiburua(isbn);
+        this.argitaletxea.setText(lista.get(0));
+        this.orriKop.setText(lista.get(1));
+        this.izenburua.setText(lista.get(2));
+
     }
     public void setMain(Liburuak liburuak){
         this.main = liburuak;

@@ -26,6 +26,7 @@ public class Sarea {
             inputLine = zatiak[1].substring(0, zatiak[1].length()-1);
             Gson gson = new Gson();
             book = gson.fromJson(inputLine, Book.class);
+            book.ISBN = isbn;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e){
