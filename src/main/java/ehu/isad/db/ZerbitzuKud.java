@@ -76,7 +76,6 @@ public class ZerbitzuKud {
         String filepath = pathToImages+"/"+path;
         File file = new File(filepath) ;
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), format, file);
-
     }
     public Image irekiIrudia (String path){
         Properties properties=Utils.lortuEzarpenak();
