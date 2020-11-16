@@ -1,27 +1,22 @@
 package ehu.isad;
 
-import ehu.isad.controller.KautotuKud;
-import ehu.isad.controller.MainKud;
+import ehu.isad.controller.ui.MainKud;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Main extends Application {
 
-  private Parent kautotuUI;
   private Parent mainUI;
 
+  private Scene mainScene;
   private Stage stage;
 
-  private KautotuKud kautotuKud;
   private MainKud mainKud;
-
 
   @Override
   public void start(Stage primaryStage) throws Exception {
@@ -29,21 +24,17 @@ public class Main extends Application {
     stage = primaryStage;
     pantailakKargatu();
 
-    stage.setTitle("Argazki Backup");
-    stage.setScene(new Scene(kautotuUI, 450, 275));
+    stage.setTitle("WhatWEB");
+    stage.setScene(mainScene);
     stage.show();
   }
 
   private void pantailakKargatu() throws IOException {
 
-    FXMLLoader loaderKautotu = new FXMLLoader(getClass().getResource("/kautotu.fxml"));
-    kautotuUI = (Parent) loaderKautotu.load();
-    kautotuKud = loaderKautotu.getController();
-    kautotuKud.setMainApp(this);
-
-    FXMLLoader loaderMain = new FXMLLoader(getClass().getResource("/main.fxml"));
+    FXMLLoader loaderMain = new FXMLLoader(getClass().getResource("/Main.fxml"));
     mainUI = (Parent) loaderMain.load();
     mainKud = loaderMain.getController();
+    mainScene = new Scene(mainUI);
     mainKud.setMainApp(this);
   }
 
@@ -52,8 +43,8 @@ public class Main extends Application {
     launch(args);
   }
 
-  public void mainErakutsi() {
-    stage.setScene(new Scene(mainUI));
-    stage.show();
-  }
+//  public void mainErakutsi() {
+//    stage.setScene(new Scene(mainUI));
+//    stage.show();
+//  }
 }
